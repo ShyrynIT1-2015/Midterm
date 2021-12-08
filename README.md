@@ -1,2 +1,2 @@
 # Midterm 
-Created By Shyryn and Zhansaya
+Created By: Shyryn and Zhansaya
