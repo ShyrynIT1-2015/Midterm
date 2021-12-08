@@ -85,7 +85,7 @@
 					<div class="container">
 					  <div class="row text-center">
 					  
-						<a href="https://zhanssayak.github.io/JS/" class="roi">
+						<a href="" class="roi">
 							<div class="col" style="background-color: #f5f5f5;">
 								<img src="brasleti.png" width="150"></img><br>
 								Браслеты<br>
@@ -460,5 +460,88 @@
 		  </div>
 		</div>
 	</footer>
+	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 600 600" style="enable-background:new 0 0 600 600;" xml:space="preserve">
+<style type="text/css">
+  .st1{fill:none;stroke:#41C7EC;}
+  .st2{fill:none;stroke:#FFB321;}
+  .st3{fill:none;stroke:#4A90E2;}
+</style>
+<g id="blue">
+  <circle class="st st1" cx="305" cy="295" r="200"/>
+  <circle class="st st2" cx="310" cy="290" r="210"/>
+  <circle class="st st3" cx="300" cy="300" r="220"/>
+</g>
+</svg>
+<script>let circles = [...document.querySelectorAll('.st')];
+let step = 0.2;
+let dirs = [
+  {
+    x: true,
+    y: false,
+    max: 340,
+    min: 260
+  },
+  {
+    x: true,
+    y: true,
+    max: 330,
+    min: 270
+  },
+  {
+    x: false,
+    y: true,
+    max: 320,
+    min: 280
+  }
+];
+
+function move() {
+  circles.forEach((circle,i) => {
+    let curcx = +circle.getAttribute('cx');
+    let curcy = +circle.getAttribute('cy');
+    let rx = curcx;
+    let ry = curcy;
+    
+    if(dirs[i].x) {
+      if(curcx + step >= dirs[i].max) {
+        rx = curcx;
+        dirs[i].x = !dirs[i].x;
+      } else {
+        rx = curcx + step;
+      }
+    } else {
+      if(curcx - step <= dirs[i].min) {
+        rx = curcx;
+        dirs[i].x = !dirs[i].x;
+      } else {
+        rx = curcx - step;
+      }
+    }
+
+    if(dirs[i].y) {
+      if(curcy + step >= dirs[i].max) {
+        ry = curcy;
+        dirs[i].y = !dirs[i].y;
+      } else {
+        ry = curcy + step;
+      }
+    } else {
+      if(curcy - step <= dirs[i].min) {
+        ry = curcy;
+        dirs[i].y = !dirs[i].y;
+      } else {
+        ry = curcy - step;
+      }
+    }
+    
+    
+    circle.setAttribute('cx', rx);
+    circle.setAttribute('cy', ry);
+  });
+  window.requestAnimationFrame(move);
+}
+
+window.requestAnimationFrame(move);</script>
   </body>
 </html>
